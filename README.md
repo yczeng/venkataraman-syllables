@@ -24,6 +24,8 @@ To score a segmented lexicon, run `score.py [segmented lexicon] [model lexicon]`
 `python score.py results/lexicon.txt data/new.mother.speech-lexicon.txt` 
 
 It looks like results for running the algorithm on syllables are:
+```
 Precision: 0.21204527081649152
 Recall: 0.5918321299638989
 f1 Score: 0.31222473515057736
+```
