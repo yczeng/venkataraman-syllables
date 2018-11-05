@@ -73,7 +73,7 @@ def insertWordBoundary(utterance, bestSegpoint):
 	else:
 		newWord = utterance[bestSegpoint + 1:]
 
-	wordString = "S".join(newWord)
+	wordString = "S".join(newWord) + "S"
 
 	if wordString in lexicon:
 		lexicon[wordString] += 1
@@ -103,8 +103,7 @@ def evalWord(word):
 	if len(word) == 0:
 		return score
 
-	wordString = "S".join(word)
-	print(wordString)
+	wordString = "S".join(word) + "S"
 
 	# unigram
 	if wordString in lexicon:
@@ -118,22 +117,16 @@ def evalWord(word):
 			score += -math.log(len(lexicon) / (sum(lexicon.values()) + len(lexicon)))
 
 	P_0 = syllables[' '] / sum(syllables.values())
-	print(P_0)
 	if P_0 != 1:
 		prob = P_0 / (1-P_0)
 	else:
 		prob = P_0 / (1-0.9999999999999999)
-
-	print(prob)
-	print(word)
 
 	for i in range(len(word)):
 		if word[i] in syllables:
 			prob *= float(syllables[word[i]]) / sum(syllables.values())
 
 	score += -math.log(prob)
-
-	print(score)
 
 	return score
 
@@ -145,10 +138,8 @@ if __name__ == "__main__":
 				processedLine = processedLine.split("S")
 				processedLine.remove("")
 
-				print(processedLine)
-
 				segmentedWord = evalUtterance(processedLine)
-				print(segmentedWord)
+				print("SEGMENTED WORD", segmentedWord)
 				result.write(segmentedWord + "\n")
 
 		with open('results/lexicon.txt', 'w') as writeLexicon:
