@@ -17,7 +17,7 @@ The results of the segmentation will be stored in `results/result.txt`.
 ## Scoring
 Performance is measured using precision, recall, and F-score.
 
-Precision is the number of correct words found out of all words found, recall is the number of correct words found out of all correct words, and F-scores it he geometric average of pricision and recall (2 * precision * recall) / (precision + recall).
+Precision is the number of correct words found out of all words found, recall is the number of correct words found out of all correct words, and F-scores it he geometric average of precision and recall (2 * precision * recall) / (precision + recall).
 
 To score a segmented lexicon, run `score.py [segmented lexicon] [model lexicon]` where segmented lexicon and model lexicon are text files containing a dictionary of words in the lexicon. An example command is:
 
